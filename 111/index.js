@@ -1,0 +1,25 @@
+const express = require('express');
+const client = require('./utils/db');
+const taskRoute = require('./api/task');
+const userRoute = require('./api/user');
+
+const app = express();
+
+app.use(async (req, res, next) => {
+  await client;
+
+  next();
+});
+
+app.use('/', taskRoute);
+app.use('/', userRoute);
+
+app.use((err, req, res, next) => {
+  res.status(400).json({
+    message: err.message,
+  });
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
