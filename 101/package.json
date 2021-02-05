@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-101",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC"
+}
